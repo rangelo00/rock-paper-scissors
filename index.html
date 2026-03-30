@@ -21,19 +21,41 @@ let computerScore = 0;
 //win condition 
 
 let winCondition = (humanScore, computerScore) => {
-    if (humanScore === computerScore) {
-        { alert ("Repeat Game!! Human Score: " + humanScore + " Computer Score: " + computerScore); }
-        resetGame();
-        playGame();
-    } else if (humanScore > computerScore) {
-        { alert (confirm("You win! Play again? Human Score " + humanScore + " Computer Score: " + computerScore));}
+    //shell
+    let message = (humanScore > computerScore) 
+        if (humanScore > computerScore) {
+            { alert ("One for humanity!");}
+        } else if (humanScore === computerScore) {
+            { alert ("Tie! Repeat game?");}
+        } else {
+            { alert ("You lose!");}
+        };
+    
+    //using shell
+    let playAgain = confirm(message + "Final: " + "Human score: " + humanScore + "Computer score: " + computerScore);
+    //always use () on an if statement
+    if (playAgain) {
+        console.clear();
         resetGame();
         playGame();
     } else {
-        { alert ("You lose! Human Score " + humanScore + " Computer Score: " + computerScore);}
-        resetGame();
-        playGame();
+        { alert ("Thanks for playing!");}
+        console.clear();
     }
+    
+    // if (humanScore === computerScore) {
+    //     { alert ("Repeat Game!! Human Score: " + humanScore + " Computer Score: " + computerScore); }
+    //     resetGame();
+    //     playGame();
+    // } else if (humanScore > computerScore) {
+    //     { alert (confirm("You win! Play again? Human Score " + humanScore + " Computer Score: " + computerScore));}
+    //     resetGame();
+    //     playGame();
+    // } else {
+    //     { alert (confirm("You lose! Human Score " + humanScore + " Computer Score: " + computerScore));}
+    //     resetGame();
+    //     playGame();
+    // }
 }
 
 //reset game
