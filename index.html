@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<script>
+"use strict";
+
+//setting up
+function getComputerChoice() {
+    let computerChoice = ["rock", "paper", "scissors"];
+    const randomChoice = Math.floor(Math.random() * computerChoice.length);
+    return computerChoice[randomChoice];
+};
+
+function getHumanChoice() {
+    return prompt("Rock, Paper, Scissors??");
+}
+
+//scoring and round
+let roundsPlayed = 0;
+let humanScore = 0;
+let computerScore = 0;
+
+//win condition 
+
+let winCondition = (humanScore, computerScore) => {
+    if (humanScore === computerScore) {
+        { alert ("Repeat Game!! Human Score: " + humanScore + " Computer Score: " + computerScore); }
+        resetGame();
+        playGame();
+    } else if (humanScore > computerScore) {
+        { alert (confirm("You win! Play again? Human Score " + humanScore + " Computer Score: " + computerScore));}
+        resetGame();
+        playGame();
+    } else {
+        { alert ("You lose! Human Score " + humanScore + " Computer Score: " + computerScore);}
+        resetGame();
+        playGame();
+    }
+}
+
+//reset game
+
+let resetGame = () => {
+    humanScore = 0;
+    computerScore = 0;
+    roundsPlayed = 0;
+}
+
+//whole logic
+function playGame() {
+    function playRound(humanChoice, computerChoice){
+
+    if (humanChoice === computerChoice) {
+        roundsPlayed++;
+        { alert("TIE!!!" + "Human Score: " + humanScore + " Computer Score: " + computerScore + " Round: " + roundsPlayed); }
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "rock")) {
+        humanScore++;
+        roundsPlayed++;
+        { alert ("One for humans! Human Score: " + humanScore + " Round: " + roundsPlayed); }
+    } else {
+        computerScore++;
+        roundsPlayed++;
+        { alert ("World Takeover! Computer Score: " + computerScore + " Round: " + roundsPlayed); }
+    }
+
+    if (roundsPlayed === 5 ) {
+        winCondition(humanScore, computerScore)
+        { alert ("list " + humanScore + "list " + computerScore);}
+    } else if (roundsPlayed < 5 ){
+        playGame();
+    }
+
+};
+
+const humanSelection = getHumanChoice();
+console.log("Prompt was called once, value:", humanSelection);
+console.log("Score", computerScore, humanScore);
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+};
+
+playGame();
+ 
+</script>
